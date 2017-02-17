@@ -36,7 +36,7 @@ if(is_post_request()) {
         // Username found, password matches
         log_in_user($user);
         // Redirect to the staff menu after login
-        redirect_to('index.php');
+        redirect_to('index.php/?user=' . $user);
       } else {
         // Username found, but password does not match.
         $errors[] = "Incorrect password"; // TODO write an error message

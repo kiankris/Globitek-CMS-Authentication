@@ -2,7 +2,12 @@
 require_once('../../private/initialize.php');
 ?>
 
-<?php require_login() ?>
+<?php require_login();
+echo "Prior to SESSION";
+foreach(session_get_cookie_params() as $key => $value){
+	echo "Hello there " .  $key . $value;
+}
+?>
 <?php $page_title = 'Staff: Menu'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
