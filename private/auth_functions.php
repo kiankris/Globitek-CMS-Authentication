@@ -5,6 +5,9 @@
   function log_in_user($user) {
     // TODO Store user's ID in session
     // TODO Store last login time in session
+
+		$_SESSION['logged_in'] = true;
+		$_SESSION['last_login'] = time();
     return true;
   }
 
@@ -24,7 +27,11 @@
   // request by comparing it to the user's last login time.
   function last_login_is_recent() {
     // TODO add code to determine if last login is recent
-    return true;
+
+		if(!isset($_SESSION['last_login'])){
+			return false;
+		}
+    return ($_SESSION['last_login'] + (60 * 60 * 24 * 1)) >= time();
   }
 
   // Checks to see if the user-agent string of the current request
@@ -50,8 +57,8 @@
     // Having a user_id in the session serves a dual-purpose:
     // - Its presence indicates the user is logged in.
     // - Its value tells which user for looking up their record.
-    if(!isset($_SESSION['user_id'])) { return false; }
-    if(!session_is_valid()) { return false; }
+    if(!isset($_SESSION['user_id'])) { return 1; }
+    if(!session_is_valid()) { return 0; }
     return true;
   }
 
