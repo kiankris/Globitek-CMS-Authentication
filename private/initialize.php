@@ -5,12 +5,13 @@
 ob_start();
 
 // Enable sessions
-// TODO add configurations
-// $cookie_lifetime = 86400;
-// session.cookie_lifetime = 86400;
-// session.cookie_httponly = 1;
+// add configurations
+$lifetime = time() + 86400;
+$httponly = true;
+session_set_cookie_params($lifetime);
+session_set_cookie_params($httponly);
 
-session_start(['use_only_cookies' => 1, 'cookie_lifetime' => 60 * 60 * 24, 'cookie_httponly' => 1, 'name' => "Fred"]);
+session_start();
 
 // Turns off any browser built-in XSS protections
 // LEAVE THIS LINE IN WHILE YOU ARE LEARNING

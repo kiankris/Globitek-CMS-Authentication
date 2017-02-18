@@ -3,10 +3,10 @@ require_once('../../private/initialize.php');
 ?>
 
 <?php require_login();
-echo "Prior to SESSION";
-foreach(session_get_cookie_params() as $key => $value){
-	echo "Hello there " .  $key . $value;
-}
+	echo phpversion() . "</br>";
+	foreach(session_get_cookie_params() as $key => $value){
+		echo $key . '= ' . $value . "</br>";
+	}
 ?>
 <?php $page_title = 'Staff: Menu'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
