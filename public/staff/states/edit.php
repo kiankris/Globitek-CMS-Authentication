@@ -14,16 +14,20 @@ $errors = array();
 if(is_post_request()) {
 
   // Confirm that values are present before accessing them.
-  if(isset($_POST['name'])) { $state['name'] = $_POST['name']; }
-  if(isset($_POST['code'])) { $state['code'] = $_POST['code']; }
-  if(isset($_POST['country_id'])) { $state['country_id'] = $_POST['country_id']; }
+  if(isset($_POST['name'])) { $state['name'] = h($_POST['name']); }
+  if(isset($_POST['code'])) { $state['code'] = h($_POST['code']); }
+  if(isset($_POST['country_id'])) { $state['country_id'] = h($_POST['country_id']); }
+	if(csrf_token_is_valid()){
+  	$result = update_state($state);
+  	if($result === true) {
+    	redirect_to('show.php?id=' . $state['id']);
+  	} else {
+    	$errors = $result;
+  	}
+	} else{
+		$errors[] = "Error: invalid request";
+	}
 
-  $result = update_state($state);
-  if($result === true) {
-    redirect_to('show.php?id=' . $state['id']);
-  } else {
-    $errors = $result;
-  }
 }
 ?>
 <?php $page_title = 'Staff: Edit State ' . $state['name']; ?>
@@ -45,6 +49,7 @@ if(is_post_request()) {
     <input type="text" name="country_id" value="<?php echo h($state['country_id']); ?>" /><br />
     <br />
     <input type="submit" name="submit" value="Update"  />
+		<?php echo csrf_token_tag();?>
   </form>
 
 </div>

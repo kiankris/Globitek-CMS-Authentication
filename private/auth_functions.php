@@ -31,7 +31,7 @@
 		if(!isset($_SESSION["last_login"])){
 			return false;				
 		}
-    return ($_SESSION["last_login"] + $expire_time) >= time();
+    return (($_SESSION["last_login"] + $expire_time) >= time());
   }
 
   // Checks to see if the user-agent string of the current request

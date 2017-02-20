@@ -16,9 +16,12 @@ $state = array(
 if(is_post_request()) {
 
   // Confirm that values are present before accessing them.
-  if(isset($_POST['name'])) { $state['name'] = $_POST['name']; }
-  if(isset($_POST['code'])) { $state['code'] = $_POST['code']; }
-	if(csrf_token_is_valid()) {
+  if(isset($_POST['name'])) { $state['name'] = h($_POST['name']); }
+  if(isset($_POST['code'])) { $state['code'] = h($_POST['code']); }
+
+	$valid_code = csrf_token_is_valid();
+	
+	if($valid_code) {
   	$result = insert_state($state);
   	if($result === true) {
     	$new_id = db_insert_id($db);
@@ -27,7 +30,7 @@ if(is_post_request()) {
     	$errors = $result;
   	}
 	} else {
-		$errors = "Error: invalid request";
+		$errors[] = "Error: invalid request";
 	}
 
 }
@@ -49,7 +52,7 @@ if(is_post_request()) {
     <input type="text" name="code" value="<?php echo h($state['code']); ?>" /><br />
     <br />
     <input type="submit" name="submit" value="Create"  />
-		<?php csrf_token_tag();?>
+		<?php echo csrf_token_tag();?>
   </form>
 
 </div>
