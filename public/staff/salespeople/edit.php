@@ -12,7 +12,7 @@ $salesperson = db_fetch_assoc($salespeople_result);
 // Set default values for all variables the page needs.
 $errors = array();
 
-if(is_post_request()) {
+if(request_is_same_domain() && is_post_request()) {
 
   // Confirm that values are present before accessing them.
   if(isset($_POST['first_name'])) { $salesperson['first_name'] = $_POST['first_name']; }

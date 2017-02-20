@@ -9,7 +9,7 @@ $users_result = find_user_by_id($_GET['id']);
 // No loop, only one result
 $user = db_fetch_assoc($users_result);
 
-if(is_post_request()) {
+if(request_is_same_domain() && is_post_request()) {
   $result = delete_user($user);
   if($result === true) {
     redirect_to('index.php');
