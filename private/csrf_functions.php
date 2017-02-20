@@ -18,6 +18,7 @@
   function csrf_token_is_valid() {
     if(!isset($_POST['csrf_token'])) { return false; }
     if(!isset($_SESSION['csrf_token'])) { return false; }
+		if(!csrf_token_is_recent()) return false;
     return ($_POST['csrf_token'] === $_SESSION['csrf_token']);
   }
 
