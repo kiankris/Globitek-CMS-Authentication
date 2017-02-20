@@ -386,7 +386,7 @@
   function insert_salesperson($salesperson) {
     global $db;
 
-    $errors = validate_salesperson($salesperson);
+    $errors= validate_salesperson($salesperson);
     if (!empty($errors)) {
       return $errors;
     }
@@ -483,7 +483,7 @@
   function find_users_by_username($username='') {
     global $db;
     $sql = "SELECT * FROM users ";
-    $sql .= "WHERE username = '" . h($username) . "';";
+    $sql .= "WHERE username = '" . db_escape($db, h($username)) . "';";
     $users_result = db_query($db, $sql);
     return $users_result;
   }

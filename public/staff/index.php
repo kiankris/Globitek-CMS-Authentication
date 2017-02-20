@@ -1,6 +1,5 @@
 <?php
 require_once('../../private/initialize.php');
-display_session_params();
 require_login();
 ?>
 

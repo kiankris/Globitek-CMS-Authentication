@@ -2,6 +2,7 @@
 require_once('../private/initialize.php');
 
 $string = "sqli' OR (1=1 AND SLEEP(5)=0) --'";
+$msg = "";
 
 $tested = isset($_GET['tested']) ? true : false;
 $fresh_start = time();
