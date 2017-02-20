@@ -20,12 +20,14 @@ if(request_is_same_domain() && is_post_request()) {
   if(isset($_POST['name'])) { $territory['name'] = $_POST['name']; }
   if(isset($_POST['position'])) { $territory['position'] = $_POST['position']; }
 
-  $result = insert_territory($territory);
-  if($result === true) {
-    $new_id = db_insert_id($db);
-    redirect_to('show.php?id=' . $new_id);
-  } else {
-    $errors = $result;
+  if(csrf_token_is_valid()){
+    $result = insert_territory($territory);
+    if($result === true) {
+      $new_id = db_insert_id($db);
+      redirect_to('show.php?id=' . $new_id);
+    } else {
+      $errors = $result;
+    }
   }
 }
 ?>
@@ -46,6 +48,7 @@ if(request_is_same_domain() && is_post_request()) {
     <input type="text" name="position" value="<?php echo h($territory['position']); ?>" /><br />
     <br />
     <input type="submit" name="submit" value="Create"  />
+    <?php echo csrf_token_tag();?>
   </form>
 
 </div>

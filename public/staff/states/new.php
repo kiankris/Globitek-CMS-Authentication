@@ -19,10 +19,8 @@ if(request_is_same_domain() && is_post_request()) {
   // Confirm that values are present before accessing them.
   if(isset($_POST['name'])) { $state['name'] = h($_POST['name']); }
   if(isset($_POST['code'])) { $state['code'] = h($_POST['code']); }
-
-	$valid_code = csrf_token_is_valid();
 	
-	if($valid_code) {
+	if(csrf_token_is_valid()){
   	$result = insert_state($state);
   	if($result === true) {
     	$new_id = db_insert_id($db);
