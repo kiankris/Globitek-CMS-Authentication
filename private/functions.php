@@ -35,6 +35,13 @@
     return ($referer_host === $_SERVER['HTTP_HOST']);
   }
 
+	function display_session_params(){
+		if(session_status() == PHP_SESSION_ACTIVE){
+			foreach($_SESSION as $key => $value){
+				echo "$key: $value </br>";
+			}
+		}
+	}
   function display_errors($errors=array()) {
     $output = '';
     if (!empty($errors)) {
