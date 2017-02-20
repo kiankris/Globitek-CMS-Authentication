@@ -46,7 +46,7 @@ The following **required** functionality is completed:
 9\. [X]  Required: Run all tests from Objective 1 again and confirm that your application is no longer vulnerable to any test.
 
 
-The following advanced user stories are optional:
+The following advanced user stories are optional and were completed:
 
 * [X]  Bonus Objective 1: Identify security flaw in Objective #4 (requiring login on staff pages)
   The security principle not being followed is security through obscurity. Giving a different error message between invalid usernames and invalid usernames && passwords lets an attacker know that they are closer to breaking into the website. The code should give the same error message between the two cases. For my code the result of either value being incorrect causes the error message "Username and password combination is invalid" to be displayed.
@@ -56,6 +56,8 @@ The following advanced user stories are optional:
 * [X]  Bonus Objective 3: CSRF tokens only valid for 10 minutes.
 
 * [X]  Bonus Objective 4: Sessions are valid only if user-agent string matches previous value.
+
+The following advanced user stories are optional and were not completed:
 
 * [ ]  Advanced Objective: Set/Get Signed-Encrypted Cookie
   * [ ]  Create "public/set\_secret\_cookie.php".
