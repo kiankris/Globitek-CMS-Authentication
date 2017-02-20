@@ -37,9 +37,8 @@
   // Checks to see if the user-agent string of the current request
   // matches the user-agent string used when the user last logged in.
   function user_agent_matches_session() {
-		$_SESSION["user_agent"] = $_SERVER["HTTP_USER_AGENT"];
-		if(!isset($_SESSION["user_agen"])) return false;
-		if(!isset($_SERVEER["HTTP_USER_AGENT"])) return false;
+		if(!isset($_SESSION["user_agent"])) return false;
+		if(!isset($_SERVER["HTTP_USER_AGENT"])) return false;
 		return $_SESSION["user_agent"] === $_SERVER["HTTP_USER_AGENT"];
   }
 
