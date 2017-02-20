@@ -3,20 +3,23 @@
   // will perform all actions necessary to log in the user
   // also protects user from session fixation.
   function log_in_user($user) {
-		$_session['logged_in'] = true;
-		$_session['last_login'] = time();
+		$lifetime = time() + 86400;
+		// setcookie(session_name(),session_id(), $lifetime);
+		$_SESSION['logged_in'] = true;
+		$_SESSION['last_login'] = $lifetime - 86400;
+		$_SESSION['user_id'] = $user["id"];
+		echo "user_id set to " . $_SESSION['user_id'] . "</br>";
     return true;
   }
 
   // a one-step function to destroy the current session
   function destroy_current_session() {
 		session_unset();
-		session_destroy();
   }
 
   // performs all actions necessary to log out a user
   function log_out_user() {
-    unset($_session['user_id']);
+    unset($_SESSION['user_id']);
     destroy_current_session();
     return true;
   }
@@ -24,10 +27,10 @@
   // determines if the request should be considered a "recent"
   // request by comparing it to the user's last login time.
   function last_login_is_recent() {
-		if(!isset($_session['last_login'])){
+		if(!isset($_SESSION['last_login'])){
 			return false;
 		}
-    return ($_session['last_login'] + (60 * 60 * 24 * 1)) >= time();
+    return ($_SESSION['last_login'] + (60 * 60 * 24 * 1)) >= time();
   }
 
   // checks to see if the user-agent string of the current request
@@ -53,7 +56,7 @@
     // having a user_id in the session serves a dual-purpose:
     // - its presence indicates the user is logged in.
     // - its value tells which user for looking up their record.
-    if(!isset($_session['user_id'])) { return 1; }
+    if(!isset($_SESSION['user_id'])) { return 0; }
     if(!session_is_valid()) { return 0; }
     return true;
   }

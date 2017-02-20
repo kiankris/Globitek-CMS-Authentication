@@ -35,6 +35,21 @@
     return ($referer_host === $_SERVER['HTTP_HOST']);
   }
 
+	function display_session_parameter(){
+		if(session_status() == PHP_SESSION_ACTIVE){
+			echo "Session </br>";
+			foreach($_SESSION as $key => $value){
+				echo "$key => $value" . "</br>";
+			}						
+			echo "cookie </br>";
+			foreach(session_get_cookie_params() as $key => $value){
+				echo "$key => $value </br>";
+			}
+		}
+		else{
+			echo "Session is inactive";						
+		}
+	}
   function display_errors($errors=array()) {
     $output = '';
     if (!empty($errors)) {

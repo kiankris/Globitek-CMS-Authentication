@@ -7,9 +7,9 @@ ob_start();
 // Enable sessions
 // add configurations
 $lifetime = time() + 86400;
-$httponly = true;
-session_set_cookie_params($lifetime);
-session_set_cookie_params($httponly);
+// $httponly = true;
+// session_set_cookie_params($lifetime);
+// session_set_cookie_params($httponly);
 
 session_start();
 

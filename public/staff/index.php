@@ -1,13 +1,12 @@
 <?php
-require_once('../../private/initialize.php');
+	require_once('../../private/initialize.php');
 ?>
 
-<?php require_login();
-	echo phpversion() . "</br>";
-	foreach(session_get_cookie_params() as $key => $value){
-		echo $key . '= ' . $value . "</br>";
-	}
+<?php 
+	require_login();
+	display_session_parameter();
 ?>
+
 <?php $page_title = 'Staff: Menu'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
