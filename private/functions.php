@@ -37,9 +37,12 @@
 
 	function display_session_params(){
 		if(session_status() == PHP_SESSION_ACTIVE){
+			echo session_id() . "</br>";
 			foreach($_SESSION as $key => $value){
 				echo "$key: $value </br>";
 			}
+			$last_login = (isset($_SESSION["last_login"])) ? $_SESSION["last_login"] : time();
+			echo $last_login - time() . "</br>";
 		}
 	}
   function display_errors($errors=array()) {

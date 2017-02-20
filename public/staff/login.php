@@ -1,5 +1,6 @@
 <?php
 require_once('../../private/initialize.php');
+display_session_params();
 
 // Until we learn about encryption, we will use an unencrypted
 // master password as a stand-in. It should go without saying
