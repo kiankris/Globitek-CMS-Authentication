@@ -20,7 +20,7 @@ The following **required** functionality is completed:
   * [X]  Required: After login, store user last login time in session data.
   * [X]  Required: Regenerate the session ID at the appropriate point.
 
-4\. [X]  Required: Require login to access staff area pages.
+4\. [X]  Required: Require login to access staff area pages: The pages that were excluded were the states/index and territories/index pages.
   * [X]  Required: Add a login requirement to *almost all* staff area pages.
   * [X]  Required: Write code for `last_login_is_recent()`.
 
@@ -57,14 +57,12 @@ The following advanced user stories are optional and were completed:
 
 * [X]  Bonus Objective 4: Sessions are valid only if user-agent string matches previous value.
 
-The following advanced user stories are optional and were not completed:
-
-* [ ]  Advanced Objective: Set/Get Signed-Encrypted Cookie
-  * [ ]  Create "public/set\_secret\_cookie.php".
-  * [ ]  Create "public/get\_secret\_cookie.php".
-  * [ ]  Encrypt and sign cookie before storing.
-  * [ ]  Verify cookie is signed correctly or show error message.
-  * [ ]  Decrypt cookie.
+* [X]  Advanced Objective: Set/Get Signed-Encrypted Cookie
+  * [X]  Create "public/set\_secret\_cookie.php".
+  * [X]  Create "public/get\_secret\_cookie.php".
+  * [X]  Encrypt and sign cookie before storing.
+  * [X]  Verify cookie is signed correctly or show error message.
+  * [X]  Decrypt cookie.
 
 ## Video Walkthrough
 
@@ -76,7 +74,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Installing php7.1.2 was probably the hardest part of this assignment as it did not immediately work with WAMPSERVER and few error messages were given on WAMP's part to determine what went wrong. The second hardest part was implementing the sessions as I found it difficult to determine what was working and what was not. Other than these two issues the assignment overall was very simple but worth the experience of reading up on sessions/cookies/WAMP.
 
 ## License
 
